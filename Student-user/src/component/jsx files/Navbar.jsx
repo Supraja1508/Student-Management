@@ -1,0 +1,54 @@
+import React from "react";
+import { FiBell, FiMoreVertical, FiMenu } from "react-icons/fi";
+
+const Navbar = ({ toggleSidebar }) => {
+  return (
+    <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-cyan-600 via-blue-500 to-purple-600 shadow-lg flex justify-between items-center px-4 md:px-6 py-3 z-50">
+      {/* Left: Burger menu + Logo */}
+      <div className="flex items-center space-x-3">
+        {/* Burger Menu for mobile */}
+        <button
+          onClick={toggleSidebar}
+          className="text-white md:hidden p-2 rounded hover:bg-white/20 transition"
+        >
+          <FiMenu size={24} />
+        </button>
+
+        {/* Logo / Portal Name */}
+        <h1 className="text-white text-xl font-bold tracking-wider drop-shadow-md">
+          College Portal
+        </h1>
+      </div>
+
+      {/* Right: Actions */}
+      <div className="flex items-center space-x-3">
+        {/* Language Selector */}
+        <select className="border border-white bg-white/20 text-white rounded px-2 py-1 text-sm backdrop-blur-sm">
+          <option>English</option>
+          <option>Tamil</option>
+          <option>Hindi</option>
+        </select>
+
+        {/* Notification */}
+        <button className="relative text-white p-2 rounded hover:bg-white/20 transition">
+          <FiBell size={22} />
+          <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full animate-pulse"></span>
+        </button>
+
+        {/* More */}
+        <button className="text-white p-2 rounded hover:bg-white/20 transition">
+          <FiMoreVertical size={22} />
+        </button>
+
+        {/* Profile */}
+        <img
+          src="https://i.pravatar.cc/40"
+          alt="profile"
+          className="h-10 w-10 rounded-full object-cover border-2 border-white shadow-md"
+        />
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
