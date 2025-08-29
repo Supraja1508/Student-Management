@@ -5,11 +5,11 @@ const Navbar = ({ toggleSidebar }) => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-cyan-600 via-blue-500 to-purple-600 shadow-lg flex justify-between items-center px-4 md:px-6 py-3 z-50">
       {/* Left: Burger menu + Logo */}
-      <div className="flex items-center space-x-3">
+      <div className="flex items-center gap-x-3">
         {/* Burger Menu for mobile */}
         <button
           onClick={toggleSidebar}
-          className="text-white md:hidden p-2 rounded hover:bg-white/20 transition"
+          className="text-white md:hidden m-0 rounded hover:bg-white/20 transition"
         >
           <FiMenu size={24} />
         </button>
@@ -21,9 +21,9 @@ const Navbar = ({ toggleSidebar }) => {
       </div>
 
       {/* Right: Actions */}
-      <div className="flex items-center space-x-3">
+      <div className="flex items-center gap-x-3">
         {/* Language Selector */}
-        <select className="border border-white bg-white/20 text-white rounded px-2 py-1 text-sm backdrop-blur-sm">
+        <select className="border border-white bg-white/20 text-black rounded px-2 py-1 text-sm backdrop-blur-sm">
           <option>English</option>
           <option>Tamil</option>
           <option>Hindi</option>
@@ -42,9 +42,9 @@ const Navbar = ({ toggleSidebar }) => {
 
         {/* Profile */}
         <img
-          src="https://i.pravatar.cc/40"
+          src=""
           alt="profile"
-          className="h-10 w-10 rounded-full object-cover border-2 border-white shadow-md"
+          className="h-10 w-10 rounded-full object-cover border-2 border-white shadow-md mr-1"
         />
       </div>
     </nav>
