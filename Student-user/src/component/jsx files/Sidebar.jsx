@@ -38,11 +38,8 @@ const Sidebar = () => {
       <div className="md:hidden fixed top-4 left-4 z-50">
         <button
           type="button"
-          onClick={() => {
-            setMobileOpen(!mobileOpen);
-            setIsOpen(!mobileOpen); // expand on mobile open
-          }}
-          className="text-white bg-gray-800 p-2 rounded shadow focus:outline-none"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="text-white  pb-2 rounded focus:outline-none"
         >
           <FiMenu size={24} />
         </button>
@@ -50,9 +47,10 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full bg-gray-800 text-white flex flex-col justify-between 
+        className={`fixed top-0 left-0 h-full bg-gradient-to-b from-blue-700 via-blue-500 to-blue-900 text-white flex flex-col justify-between
           transition-all duration-300 ease-in-out
-          ${isOpen ? "w-56" : "w-16"}
+          rounded-tr-3xl rounded-br-3xl
+          ${isOpen || mobileOpen ? "w-56" : "w-16"}
           ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
           z-40
         `}
@@ -60,25 +58,24 @@ const Sidebar = () => {
         onMouseLeave={() => !mobileOpen && setIsOpen(false)}
       >
         {/* Menu Items */}
-        <div className="mt-16 flex flex-col space-y-1">
+        <div className="mt-16 flex flex-col space-y-2 px-1">
           {menuItems.map((item, index) => (
             <button
-              type="button"
               key={index}
+              type="button"
               disabled={item.disabled}
               onClick={() => setActiveItem(item.name)}
-              className={`flex items-center gap-4 px-3 py-2 rounded transition focus:outline-none 
+              className={`flex items-center gap-4 px-3 py-2 rounded-l-full transition-all duration-200 focus:outline-none
                 ${
                   item.disabled
-                    ? "opacity-40 cursor-not-allowed"
+                    ? "opacity-50 cursor-not-allowed"
                     : activeItem === item.name
-                    ? "bg-blue-600 text-white"
-                    : "hover:bg-gray-700 "
-                    
+                    ? "bg-blue-500 text-white shadow-md"
+                    : "hover:bg-amber-50 text-black hover:shadow-md"
                 }`}
             >
               <item.icon size={22} />
-              {isOpen && (
+              {(isOpen || mobileOpen) && (
                 <span className="whitespace-nowrap text-sm font-medium">
                   {item.name}
                 </span>
@@ -91,14 +88,12 @@ const Sidebar = () => {
         <div className="mb-6 px-3">
           <button
             type="button"
-            className={`flex items-center gap-4 w-full px-3 py-2 rounded transition focus:outline-none 
-              hover:bg-gray-700 ${
-                activeItem === "Logout" ? "bg-red-600 text-white" : ""
-              }`}
+            className={`flex items-center gap-4 w-full px-3 py-2 rounded-l-full transition-all duration-200 focus:outline-none
+              hover:bg-red-600 ${activeItem === "Logout" ? "bg-red-600 text-white shadow-md" : ""}`}
             onClick={() => setActiveItem("Logout")}
           >
             <FiLogOut size={22} />
-            {isOpen && <span className="text-sm font-medium">Logout</span>}
+            {(isOpen || mobileOpen) && <span className="text-sm font-medium">Logout</span>}
           </button>
         </div>
       </div>
@@ -107,10 +102,7 @@ const Sidebar = () => {
       {mobileOpen && (
         <div
           className="fixed inset-0 bg-black opacity-50 z-30 md:hidden"
-          onClick={() => {
-            setMobileOpen(false);
-            setIsOpen(false); // collapse on close
-          }}
+          onClick={() => setMobileOpen(false)}
         ></div>
       )}
     </>

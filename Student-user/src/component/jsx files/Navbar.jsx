@@ -3,16 +3,9 @@ import { FiBell, FiMoreVertical, FiMenu } from "react-icons/fi";
 
 const Navbar = ({ toggleSidebar }) => {
   return (
-    <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-cyan-600 via-blue-500 to-purple-600 shadow-lg flex justify-between items-center px-4 md:px-6 py-3 z-50">
+    <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-cyan-600 via-blue-500 to-purple-600 shadow-lg flex justify-between items-center px-20 md:px-6 py-2 z-40">
       {/* Left: Burger menu + Logo */}
       <div className="flex items-center gap-x-3">
-        {/* Burger Menu for mobile */}
-        <button
-          onClick={toggleSidebar}
-          className="text-white md:hidden m-0 rounded hover:bg-white/20 transition"
-        >
-          <FiMenu size={24} />
-        </button>
 
         {/* Logo / Portal Name */}
         <h1 className="text-white text-xl font-bold tracking-wider drop-shadow-md">
@@ -21,9 +14,9 @@ const Navbar = ({ toggleSidebar }) => {
       </div>
 
       {/* Right: Actions */}
-      <div className="flex items-center gap-x-3">
+      <div className="flex  items-center gap-x-3">
         {/* Language Selector */}
-        <select className="border border-white bg-white/20 text-black rounded px-2 py-1 text-sm backdrop-blur-sm">
+        <select className="border rounded-2xl border-white bg-white/20 text-black  px-2 py-1 text-sm backdrop-blur-sm">
           <option>English</option>
           <option>Tamil</option>
           <option>Hindi</option>
