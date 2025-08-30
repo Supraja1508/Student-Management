@@ -13,23 +13,23 @@ import {
 } from "react-icons/fa";
 import { AiOutlineFileText } from "react-icons/ai";
 import { FiSettings, FiLogOut, FiMenu } from "react-icons/fi";
+import { NavLink } from "react-router-dom";  // 👈 use NavLink
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false); // desktop hover expand
   const [mobileOpen, setMobileOpen] = useState(false); // mobile toggle
-  const [activeItem, setActiveItem] = useState("Dashboard"); // active highlight
 
   const menuItems = [
-    { name: "Dashboard", icon: MdDashboard },
-    { name: "Attendance", icon: FaClipboardCheck },
-    { name: "Timetable", icon: MdSchedule },
-    { name: "Result", icon: FaGraduationCap },
-    { name: "Materials", icon: MdLibraryBooks },
-    { name: "Faculty", icon: FaUserTie },
-    { name: "Request Form", icon: AiOutlineFileText },
+    { name: "Dashboard", icon: MdDashboard, path: "/dashboard" },
+    { name: "Attendance", icon: FaClipboardCheck, path: "/dashboard/attendance" },
+    { name: "Timetable", icon: MdSchedule, path: "/dashboard/timetable" },
+    { name: "Result", icon: FaGraduationCap, path: "/dashboard/result" },
+    { name: "Materials", icon: MdLibraryBooks, path: "/dashboard/materials" },
+    { name: "Faculty", icon: FaUserTie, path: "/dashboard/faculty" },
+    { name: "Request Form", icon: AiOutlineFileText, path: "/dashboard/request-form" },
     { name: "No Due", icon: MdBlock, disabled: true },
-    { name: "Library Books", icon: FaBook },
-    { name: "Settings", icon: FiSettings },
+    { name: "Library Books", icon: FaBook, path: "/dashboard/library" },
+    { name: "Settings", icon: FiSettings, path: "/dashboard/settings" },
   ];
 
   return (
@@ -39,7 +39,7 @@ const Sidebar = () => {
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="text-white  pb-2 rounded focus:outline-none"
+          className="text-white pb-2 rounded focus:outline-none"
         >
           <FiMenu size={24} />
         </button>
@@ -59,41 +59,55 @@ const Sidebar = () => {
       >
         {/* Menu Items */}
         <div className="mt-16 flex flex-col space-y-2 px-1">
-          {menuItems.map((item, index) => (
-            <button
-              key={index}
-              type="button"
-              disabled={item.disabled}
-              onClick={() => setActiveItem(item.name)}
-              className={`flex items-center gap-4 px-3 py-2 rounded-l-full transition-all duration-200 focus:outline-none
-                ${
-                  item.disabled
-                    ? "opacity-50 cursor-not-allowed"
-                    : activeItem === item.name
-                    ? "bg-blue-500 text-white shadow-md"
-                    : "hover:bg-amber-50 text-black hover:shadow-md"
-                }`}
-            >
-              <item.icon size={22} />
-              {(isOpen || mobileOpen) && (
-                <span className="whitespace-nowrap text-sm font-medium">
-                  {item.name}
-                </span>
-              )}
-            </button>
-          ))}
+          {menuItems.map((item, index) =>
+            item.disabled ? (
+              <div
+                key={index}
+                className="flex items-center gap-4 px-3 py-2 rounded-l-full opacity-50 cursor-not-allowed"
+              >
+                <item.icon size={22} />
+                {(isOpen || mobileOpen) && (
+                  <span className="whitespace-nowrap text-sm font-medium">
+                    {item.name}
+                  </span>
+                )}
+              </div>
+            ) : (
+              <NavLink
+                key={index}
+                to={item.path}
+                className={({ isActive }) =>
+                  `flex items-center gap-4 px-3 py-2 rounded-l-full transition-all duration-200 focus:outline-none
+                  ${
+                    isActive
+                      ? "bg-blue-500 text-white shadow-md"
+                      : "hover:bg-amber-50 text-black hover:shadow-md"
+                  }`
+                }
+                onClick={() => setMobileOpen(false)} // close sidebar on mobile
+              >
+                <item.icon size={22} />
+                {(isOpen || mobileOpen) && (
+                  <span className="whitespace-nowrap text-sm font-medium">
+                    {item.name}
+                  </span>
+                )}
+              </NavLink>
+            )
+          )}
         </div>
 
         {/* Logout */}
         <div className="mb-6 px-3">
           <button
             type="button"
-            className={`flex items-center gap-4 w-full px-3 py-2 rounded-l-full transition-all duration-200 focus:outline-none
-              hover:bg-red-600 ${activeItem === "Logout" ? "bg-red-600 text-white shadow-md" : ""}`}
-            onClick={() => setActiveItem("Logout")}
+            className="flex items-center gap-4 w-full px-3 py-2 rounded-l-full transition-all duration-200 focus:outline-none hover:bg-red-600"
+            onClick={() => alert("Logout clicked!")}
           >
             <FiLogOut size={22} />
-            {(isOpen || mobileOpen) && <span className="text-sm font-medium">Logout</span>}
+            {(isOpen || mobileOpen) && (
+              <span className="text-sm font-medium">Logout</span>
+            )}
           </button>
         </div>
       </div>

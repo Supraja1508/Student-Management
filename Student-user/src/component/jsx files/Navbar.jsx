@@ -1,7 +1,5 @@
-import React from "react";
 import { FiBell, FiMoreVertical, FiMenu } from "react-icons/fi";
-
-const Navbar = ({ toggleSidebar }) => {
+const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-cyan-600 via-blue-500 to-purple-600 shadow-lg flex justify-between items-center px-20 md:px-6 py-2 z-40">
       {/* Left: Burger menu + Logo */}
