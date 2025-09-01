@@ -4,7 +4,8 @@ import Signup from "./component/jsx files/Signup";
 import ForgotPassword from "./component/jsx files/ForgotPassword";
 import DashboardLayout from "./component/jsx files/DashboardLayout";
 import DashboardDesign from "./component/DDesign/DashboardDesign";
-import Attadance from "./component/DDesign/Attadance";
+import Attadance from "./component/DDesign/Attendance";
+import { Timetable } from "./component/DDesign/Timetable";
 function App(){
   return(
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App(){
        <Route path="/dashboardlayout" element={<DashboardLayout />}>
           <Route index element={<DashboardDesign />} /> 
           <Route path="attendance" element={<Attadance />} />
+          <Route path="timetable" element={<Timetable/>} />
         </Route>
     </Routes>
     </BrowserRouter>

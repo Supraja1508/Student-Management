@@ -20,16 +20,16 @@ const Sidebar = () => {
   const [mobileOpen, setMobileOpen] = useState(false); // mobile toggle
 
   const menuItems = [
-    { name: "Dashboard", icon: MdDashboard, path: "/dashboard" },
-    { name: "Attendance", icon: FaClipboardCheck, path: "/dashboard/attendance" },
-    { name: "Timetable", icon: MdSchedule, path: "/dashboard/timetable" },
-    { name: "Result", icon: FaGraduationCap, path: "/dashboard/result" },
-    { name: "Materials", icon: MdLibraryBooks, path: "/dashboard/materials" },
-    { name: "Faculty", icon: FaUserTie, path: "/dashboard/faculty" },
-    { name: "Request Form", icon: AiOutlineFileText, path: "/dashboard/request-form" },
+    { name: "Dashboard", icon: MdDashboard, path: "/dashboardlayout" },
+    { name: "Attendance View", icon: FaClipboardCheck, path: "/dashboardlayout/attendance" },
+    { name: "Timetable", icon: MdSchedule, path: "/dashboardlayout/timetable" },
+    { name: "Result", icon: FaGraduationCap, path: "/dashboardlayout/result" },
+    { name: "Materials", icon: MdLibraryBooks, path: "/dashboardlayout/materials" },
+    { name: "Faculty", icon: FaUserTie, path: "/dashboardlayout/faculty" },
+    { name: "Request Form", icon: AiOutlineFileText, path: "/dashboardlayout/request-form" },
     { name: "No Due", icon: MdBlock, disabled: true },
-    { name: "Library Books", icon: FaBook, path: "/dashboard/library" },
-    { name: "Settings", icon: FiSettings, path: "/dashboard/settings" },
+    { name: "Library Books", icon: FaBook, path: "/dashboardlayout/library" },
+    { name: "Settings", icon: FiSettings, path: "/dashboardlayout/settings" },
   ];
 
   return (

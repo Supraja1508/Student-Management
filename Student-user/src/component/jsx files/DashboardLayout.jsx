@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
 
+
 const DashboardLayout = () => {
   return (
     <div className="flex">
@@ -9,7 +10,7 @@ const DashboardLayout = () => {
       <div className="flex-1 min-h-screen bg-gray-100">
         <Navbar />
         <div className="pt-16">
-          <Outlet /> 👈 Child route render aagum place
+          <Outlet />
         </div>
       </div>
     </div>

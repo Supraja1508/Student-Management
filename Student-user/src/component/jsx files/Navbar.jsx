@@ -14,7 +14,7 @@ const Navbar = () => {
       {/* Right: Actions */}
       <div className="flex  items-center gap-x-3">
         {/* Language Selector */}
-        <select className="border rounded-2xl border-white bg-white/20 text-black  px-2 py-1 text-sm backdrop-blur-sm">
+        <select className="border rounded-2xl border-white bg-white/20 text-black  px-2 py-1 text-l backdrop-blur-sm">
           <option>English</option>
           <option>Tamil</option>
           <option>Hindi</option>
