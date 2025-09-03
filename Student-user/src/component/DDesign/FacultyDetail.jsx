@@ -29,7 +29,7 @@ const FacultyPage = ({ filterDept }) => {
     : facultyList;
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col font-serif">
       <Navbar showBack={true} onBack={() => window.history.back()} />
       <div className="flex-1 flex flex-col items-center justify-start pt-10 px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-blue-800 mb-8 text-center">

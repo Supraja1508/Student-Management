@@ -75,32 +75,39 @@ const facultyDetails = [
     subjects: ["Math"],
     degree: "M.Sc Math",
     experience: 5,
+    image: "https://via.placeholder.com/150",
+    
   },
   {
     name: "Kumar",
     subjects: ["Physics"],
     degree: "M.Sc Physics",
     experience: 8,
+    image: "https://via.placeholder.com/150",
   },
   {
     name: "Meena",
     subjects: ["Chemistry"],
     degree: "M.Sc Chemistry",
     experience: 6,
+    image: "https://via.placeholder.com/150",
   },
   {
     name: "Rajesh",
     subjects: ["English"],
     degree: "M.A English",
     experience: 7,
+    image: "https://via.placeholder.com/150",
   },
   {
     name: "Sundar",
     subjects: ["Biology"],
     degree: "M.Sc Biology",
     experience: 5,
+    image: "https://via.placeholder.com/150",
   },
 ];
+
 
 export const Timetable = () => {
   const [todayIndex, setTodayIndex] = useState(null);
@@ -114,16 +121,21 @@ export const Timetable = () => {
   }, [days]);
 
   return (
-    <div className="font-sans bg-gray-50 min-h-screen p-4 flex flex-col md:flex-row-reverse gap-4">
+    <div className=" bg-gray-50 min-h-screen p-4 flex flex-col md:flex-row-reverse gap-4 font-serif">
       {/* Faculty Panel on Right */}
       <div className="md:w-1/4 bg-white p-4 shadow-lg rounded-xl h-fit overflow-auto">
         <h2 className="text-lg font-bold mb-4 text-center">Faculty Details</h2>
         {facultyDetails.map((faculty, idx) => (
-          <div key={idx} className="mb-3 p-2 border rounded hover:shadow-md transition duration-200">
+          <div className="flex justify-evenly items-center border-1 m-2">
+          <div key={idx} className=" mb-3 p-2  rounded hover:shadow-md transition duration-200">
             <p className="font-semibold">{faculty.name}</p>
             <p className="text-sm text-gray-600">Subjects: {faculty.subjects.join(", ")}</p>
             <p className="text-sm text-gray-600">Degree: {faculty.degree}</p>
             <p className="text-sm text-gray-600">Experience: {faculty.experience} yrs</p>
+          </div>
+           <div className="w-28 h-28 rounded-full border-4 border-white mb-4 bg-gray-200 flex items-center justify-center text-sm font-bold">
+            <img src={faculty.image} alt="mentors" />
+            </div>
           </div>
         ))}
       </div>

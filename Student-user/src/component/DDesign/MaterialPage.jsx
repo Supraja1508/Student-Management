@@ -43,7 +43,7 @@ const allMaterials = {
 const DepartmentSelect = ({ onSelect }) => {
   const departments = ["CSE", "EEE", "MECH", "ECE", "AGRI", "AI/ML"];
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white p-4 font-serif">
       <h2 className="text-3xl font-bold text-blue-800 mb-6 text-center">Select Your Department</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
         {departments.map((dept) => (
@@ -66,7 +66,7 @@ const SemSelect = ({ department, onSelect }) => {
   const availableSems = Object.keys(allMaterials[department] || {}).map(Number);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white p-4 font-serif ">
       <h2 className="text-2xl sm:text-3xl font-bold text-blue-800 mb-6 text-center">
         Select Semester for <span className="text-cyan-700">{department}</span>
       </h2>
@@ -104,7 +104,7 @@ const MaterialPage = ({ department, sem, onBack }) => {
   const materials = allMaterials[department]?.[sem] || [];
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col font-serif">
       {/* Back button will call onBack(), which you pass from MaterialFlow */}
       <Navbar showBack={true} onBack={onBack} />
 
