@@ -6,6 +6,10 @@ import DashboardLayout from "./component/jsx files/DashboardLayout";
 import DashboardDesign from "./component/DDesign/DashboardDesign";
 import Attadance from "./component/DDesign/Attendance";
 import { Timetable } from "./component/DDesign/Timetable";
+import LeaveApplication from "./component/DDesign/LeaveApplication";
+import Result from "./component/DDesign/Result";
+import MaterialFlow from "./component/DDesign/MaterialPage";
+import FacultyPage from "./component/DDesign/FacultyDetail";
 function App(){
   return(
     <BrowserRouter>
@@ -17,7 +21,14 @@ function App(){
        <Route path="/dashboardlayout" element={<DashboardLayout />}>
           <Route index element={<DashboardDesign />} /> 
           <Route path="attendance" element={<Attadance />} />
+          <Route path="leave" element={<LeaveApplication />} />
           <Route path="timetable" element={<Timetable/>} />
+          <Route path="result" element={<Result/>} />
+          <Route path="materials" element={<MaterialFlow/>} />
+          <Route path="faculty" element={<FacultyPage/>} />
+
+          
+
         </Route>
     </Routes>
     </BrowserRouter>
