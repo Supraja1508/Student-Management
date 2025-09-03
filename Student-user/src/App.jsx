@@ -10,6 +10,10 @@ import LeaveApplication from "./component/DDesign/LeaveApplication";
 import Result from "./component/DDesign/Result";
 import MaterialFlow from "./component/DDesign/MaterialPage";
 import FacultyPage from "./component/DDesign/FacultyDetail";
+import LibraryBooks from "./component/DDesign/LibraryBooks";
+import SettingsPage from "./component/DDesign/SettingsPage";
+
+
 function App(){
   return(
     <BrowserRouter>
@@ -26,10 +30,12 @@ function App(){
           <Route path="result" element={<Result/>} />
           <Route path="materials" element={<MaterialFlow/>} />
           <Route path="faculty" element={<FacultyPage/>} />
-
+          <Route path="library" element={<LibraryBooks/>} />
+          <Route path="settings" element={<SettingsPage/>} />
           
-
-        </Route>
+           {/* add other routes here */}
+        <Route path="*" element={<Login />} />
+          </Route>
     </Routes>
     </BrowserRouter>
   )

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   MdDashboard,
   MdSchedule,
@@ -13,11 +13,12 @@ import {
 } from "react-icons/fa";
 import { AiOutlineFileText } from "react-icons/ai";
 import { FiSettings, FiLogOut, FiMenu } from "react-icons/fi";
-import { NavLink } from "react-router-dom";  // 👈 use NavLink
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false); // desktop hover expand
   const [mobileOpen, setMobileOpen] = useState(false); // mobile toggle
+  const navigate = useNavigate();
 
   const menuItems = [
     { name: "Dashboard", icon: MdDashboard, path: "/dashboardlayout" },
@@ -26,11 +27,20 @@ const Sidebar = () => {
     { name: "Result", icon: FaGraduationCap, path: "/dashboardlayout/result" },
     { name: "Materials", icon: MdLibraryBooks, path: "/dashboardlayout/materials" },
     { name: "Faculty", icon: FaUserTie, path: "/dashboardlayout/faculty" },
-    { name: "Request Form", icon: AiOutlineFileText, path: "/dashboardlayout/request-form" },
+    { name: "RequestForm", icon: AiOutlineFileText, path: "/dashboardlayout/request-form" },
     { name: "No Due", icon: MdBlock, disabled: true },
     { name: "Library Books", icon: FaBook, path: "/dashboardlayout/library" },
     { name: "Settings", icon: FiSettings, path: "/dashboardlayout/settings" },
   ];
+
+  const handleLogout = () => {
+    // Clear user session/token safely
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    // Redirect to login page and remove sidebar/navbar
+    navigate("/login", { replace: true });
+  };
 
   return (
     <>
@@ -84,7 +94,7 @@ const Sidebar = () => {
                       : "hover:bg-amber-50 text-black hover:shadow-md"
                   }`
                 }
-                onClick={() => setMobileOpen(false)} // close sidebar on mobile
+                onClick={() => setMobileOpen(false)}
               >
                 <item.icon size={22} />
                 {(isOpen || mobileOpen) && (
@@ -102,7 +112,7 @@ const Sidebar = () => {
           <button
             type="button"
             className="flex items-center gap-4 w-full px-3 py-2 rounded-l-full transition-all duration-200 focus:outline-none hover:bg-red-600"
-            onClick={() => alert("Logout clicked!")}
+            onClick={handleLogout}
           >
             <FiLogOut size={22} />
             {(isOpen || mobileOpen) && (
