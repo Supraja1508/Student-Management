@@ -1,5 +1,5 @@
 import { useState } from "react";
-import clg from "../image/clg.jpg";
+import clg from '../image/clg.jpg';
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
@@ -111,8 +111,7 @@ const DashboardDesign = () => {
               <div className="flex justify-between items-center">
                 <h1 className="font-bold text-2xl">HELLO!</h1>
                 <img
-                  src={clg}
-                  alt="clg logo"
+                  src={clg} alt="clg logo"
                   className="w-20 h-20 shadow-lg rounded-full"
                 />
               </div>
