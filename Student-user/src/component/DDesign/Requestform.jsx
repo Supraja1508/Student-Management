@@ -4,14 +4,14 @@ const Requestform = () => {
 const navigate = useNavigate();
   const forms = [
     {name: "Leave Form",description:"Use this form to apply for leave due to health issues or emergency situations.",path:"/dashboardlayout/requestform/LeaveApplication"},
-    {name: "Internship Form",description:"This form is required to get approval for internships through our institute.",path:"/dashboardlayout/requestform/Buspass"},
-    {name: "ID Card Form",description:"Apply here if you have lost your ID card and need a duplicate."},
-    {name: "Placement Registration Form",description:"Students interested in campus placement must register using this form."},
-    {name: "Bus Pass Form",description:"Apply for a bus pass if you want to use the institute’s transportation facility."},
-    {name: "Library Card Form",description:"Use this form to apply for a library card to access institute library services."},
-    {name: "Hostel Admission Form",description:"Students who want hostel accommodation should fill out this form."},
-    {name: "Scholarship Form",description:"Eligible students can apply for available scholarships using this form."},
-    {name: "Migration Form",description:"Use this form if you are transferring to another university."},
+    {name: "Internship Form",description:"This form is required to get approval for internships through our institute.",path:"/dashboardlayout/requestform/Internshipform"},
+    {name: "ID Card Form",description:"Apply here if you have lost your ID card and need a duplicate.",path:"/dashboardlayout/requestform/IDcard"},
+    {name: "Placement Registration Form",description:"Students interested in campus placement must register using this form.",path:"/dashboardlayout/requestform/placementform"},
+    {name: "Bus Pass Form",description:"Apply for a bus pass if you want to use the institute’s transportation facility.",path:"/dashboardlayout/requestform/Buspassform"},
+    {name: "Library Card Form",description:"Use this form to apply for a library card to access institute library services.",path:"/dashboardlayout/requestform/Librarycard"},
+    {name: "Hostel Admission Form",description:"Students who want hostel accommodation should fill out this form.",path:"/dashboardlayout/requestform/Hostelform"},
+    {name: "Scholarship Form",description:"Eligible students can apply for available scholarships using this form.",path:"/dashboardlayout/requestform/Scholarshipform"},
+    {name: "Migration Form",description:"Use this form if you are transferring to another university.",path:"/dashboardlayout/requestform/Migrationform"},
   ];
   
   

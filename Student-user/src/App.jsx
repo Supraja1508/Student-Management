@@ -14,6 +14,13 @@ import SettingsPage from "./component/DDesign/SettingsPage";
 import Requestform from "./component/DDesign/Requestform";
 import LeaveApplication from "./component/formscollection/LeaveApplication";
 import Buspassform from "./component/formscollection/Buspassform";
+import Hostelform from "./component/formscollection/Hostelform";
+import Internshipform from "./component/formscollection/Internshipform";
+import IDcardform from "./component/formscollection/IDcardform";
+import Librarycardform from "./component/formscollection/Librarycardform";
+import Migrationform from "./component/formscollection/Migrationform";
+import Placementform from "./component/formscollection/Placementform";
+import Scholarshipform from "./component/formscollection/Scholarshipform";
 function App(){
   return(
     <BrowserRouter>
@@ -34,7 +41,14 @@ function App(){
       <Route path="settings" element={<SettingsPage />} />
       <Route path="requestform" element={<Requestform />} />
       <Route path="/dashboardlayout/requestform/LeaveApplication" element={<LeaveApplication />} />
-      <Route path="/dashboardlayout/requestform/Buspass" element={<Buspassform />} />
+      <Route path="/dashboardlayout/requestform/Buspassform" element={<Buspassform />} />
+      <Route path="/dashboardlayout/requestform/Hostelform" element={<Hostelform/>} />
+      <Route path="/dashboardlayout/requestform/Internshipform" element={<Internshipform/>} />
+      <Route path="/dashboardlayout/requestform/IDcard" element={<IDcardform/>} />
+      <Route path="/dashboardlayout/requestform/Librarycard" element={<Librarycardform/>} />
+      <Route path="/dashboardlayout/requestform/Migrationform" element={<Migrationform/>} />
+      <Route path="/dashboardlayout/requestform/placementform" element={<Placementform/>} />
+      <Route path="/dashboardlayout/requestform/Scholarshipform" element={<Scholarshipform/>} />
       
     </Route>
   </Routes>
