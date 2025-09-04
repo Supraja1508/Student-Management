@@ -36,7 +36,7 @@ const Navbar = ({ showBack, onBack }) => {
 
         {/* Profile */}
         <img
-          src=""
+          src="https://i.pravatar.cc/150"
           alt="profile"
           className="h-10 w-10 rounded-full object-cover border-2 border-white shadow-md mr-1"
         />

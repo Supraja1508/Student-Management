@@ -27,7 +27,7 @@ const Sidebar = () => {
     { name: "Result", icon: FaGraduationCap, path: "/dashboardlayout/result" },
     { name: "Materials", icon: MdLibraryBooks, path: "/dashboardlayout/materials" },
     { name: "Faculty", icon: FaUserTie, path: "/dashboardlayout/faculty" },
-    { name: "RequestForm", icon: AiOutlineFileText, path: "/dashboardlayout/request-form" },
+    { name: "RequestForm", icon: AiOutlineFileText, path: "/dashboardlayout/requestform" },
     { name: "No Due", icon: MdBlock, disabled: true },
     { name: "Library Books", icon: FaBook, path: "/dashboardlayout/library" },
     { name: "Settings", icon: FiSettings, path: "/dashboardlayout/settings" },
@@ -37,9 +37,10 @@ const Sidebar = () => {
     // Clear user session/token safely
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    
 
     // Redirect to login page and remove sidebar/navbar
-    navigate("/login", { replace: true });
+    navigate("/", { replace: true });
   };
 
   return (
