@@ -12,6 +12,7 @@ const navigate = useNavigate();
     {name: "Hostel Admission Form",description:"Students who want hostel accommodation should fill out this form.",path:"/dashboardlayout/requestform/Hostelform"},
     {name: "Scholarship Form",description:"Eligible students can apply for available scholarships using this form.",path:"/dashboardlayout/requestform/Scholarshipform"},
     {name: "Migration Form",description:"Use this form if you are transferring to another university.",path:"/dashboardlayout/requestform/Migrationform"},
+    {name: "Bonofide Form",description:"Use this form if you are transferring to another university.",path:"/dashboardlayout/requestform/Bonofideform"},
   ];
   
   
