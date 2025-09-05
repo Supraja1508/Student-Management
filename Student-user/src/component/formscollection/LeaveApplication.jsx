@@ -37,14 +37,19 @@ const LeaveApplication = () => {
   // 👉 Save as PDF function
   const handleSavePDF = async () => {
     const element = componentRef.current;
-    const canvas = await html2canvas(element);
+
+    const canvas = await html2canvas(element, {
+      scale: 2, // ✅ High quality
+      useCORS: true,
+    });
+
     const data = canvas.toDataURL("image/png");
 
     const pdf = new jsPDF("p", "mm", "a4");
-    const imgProps = pdf.getImageProperties(data);
     const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+    const pdfHeight = pdf.internal.pageSize.getHeight();
 
+    // ✅ Fit image neatly into A4
     pdf.addImage(data, "PNG", 0, 0, pdfWidth, pdfHeight);
     pdf.save("Leave_Application.pdf");
   };
@@ -106,32 +111,6 @@ const LeaveApplication = () => {
             name="to"
             placeholder="To (Ex: Principal)"
             value={form.to}
-            onChange={handleChange}
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="text"
-            name="year"
-            placeholder="Year"
-            value={form.year}
-            onChange={handleChange}
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            required
-          />
-          <input
-            type="text"
-            name="department"
-            placeholder="Department"
-            value={form.department}
-            onChange={handleChange}
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            type="text"
-            name="clgname"
-            placeholder="College Name"
-            value={form.clgname}
             onChange={handleChange}
             className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
@@ -221,10 +200,34 @@ const LeaveApplication = () => {
             </div>
 
             {/* Date & Place */}
-            <div className="flex justify-between">
+            <div className="flex justify-between mb-6">
               <p>Date: {form.date}</p>
               <p>Place: {form.place}</p>
             </div>
+
+            {/* Signature Section */}
+            <div className="grid grid-cols-3 gap-4 text-center mt-10">
+              <div>
+                <div className="border-1 mt-15"></div>
+                <p className="mt-2">HOD</p>
+              </div>
+              <div>
+                <div className="border-1 mt-15"></div>
+                <p className="mt-2">Vice Principal</p>
+              </div>
+              <div>
+                <div className="border-1 mt-15"></div>
+                <p className="mt-2">Principal</p>
+              </div>
+            </div>
+
+            {/* College Symbol */}
+           <div className="mt-25 grid justify-center items-center">
+
+              <div className="border-1 w-50 "></div>
+              <p className="text-center mt-2">College Symbol</p>
+           </div>
+            
           </div>
 
           {/* Buttons */}
