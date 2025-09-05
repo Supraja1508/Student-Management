@@ -25,7 +25,7 @@ const BonofideForm = () => {
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
       <div className="bg-white shadow-xl rounded-2xl p-6 max-w-lg w-full">
         {/* Header */}
-        <h2 className="text-3xl font-bold text-center text-blue-900 mb-6">
+        <h2 className="text-3xl font-bold text-center text-blue-900 mb-6 uppercase">
           College Bonafide Certificate Request
         </h2>
         <p className="text-center text-gray-600 mb-6">

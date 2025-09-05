@@ -16,6 +16,7 @@ const Buspassform = () => {
     officeAcknowledged: false,
   });
 
+  // 👉 Handle Input Change
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -24,33 +25,40 @@ const Buspassform = () => {
     });
   };
 
+  // 👉 Generate PDF
   const generatePDF = () => {
     const doc = new jsPDF();
 
-    // Title & Logo
+    // Header
     doc.setFontSize(16);
     doc.text("🏫 College Logo", 105, 20, { align: "center" });
     doc.setFontSize(14);
     doc.text("Bus Cancellation Request Form", 105, 30, { align: "center" });
 
-    // Content Box
+    // Outline box
     doc.setDrawColor(0);
-    doc.rect(15, 35, 180, 110); // Main content box
+    doc.rect(15, 35, 180, 110);
 
+    // Student Info
     let y = 45;
     doc.setFontSize(12);
     doc.text(`Name: ${formData.name}`, 20, y);
     doc.text(`Roll No: ${formData.rollNo}`, 120, y);
+
     y += 10;
     doc.text(`Department: ${formData.department}`, 20, y);
     doc.text(`Year: ${formData.year}`, 120, y);
+
     y += 10;
     doc.text(`Semester: ${formData.semester}`, 20, y);
     doc.text(`Bus Route: ${formData.route}`, 120, y);
+
     y += 10;
     doc.text(`Address: ${formData.address}`, 20, y);
+
     y += 10;
     doc.text(`Reason: ${formData.reason}`, 20, y);
+
     y += 10;
     doc.text(`Fees Pending: ${formData.feesPending ? "Yes" : "No"}`, 20, y);
     doc.text(
@@ -59,28 +67,30 @@ const Buspassform = () => {
       y
     );
 
-    // Signature & Symbol Box
+    // Signature Section
     y += 20;
-    doc.setFontSize(12);
     doc.text("Signatures & College Symbol:", 20, y);
 
-    // College Symbol / Stamp Box
-    doc.rect(140, y + 5, 50, 20);
-    doc.text("College Symbol", 155, y + 18);
-
-    // Signature Boxes
-    doc.rect(20, y + 5, 50, 20); // HOD
+    // HOD
+    doc.rect(20, y + 5, 50, 20);
     doc.text("HOD", 40, y + 20);
 
-    doc.rect(80, y + 5, 50, 20); // Vice Principal
+    // Vice Principal
+    doc.rect(80, y + 5, 50, 20);
     doc.text("Vice Principal", 90, y + 20);
 
-    doc.rect(20, y + 30, 50, 20); // Principal
+    // Principal
+    doc.rect(20, y + 30, 50, 20);
     doc.text("Principal", 40, y + 45);
+
+    // College Symbol
+    doc.rect(140, y + 5, 50, 45);
+    doc.text("College Symbol", 150, y + 30);
 
     doc.save(`BusCancellation_${formData.rollNo}.pdf`);
   };
 
+  // 👉 Submit Handler
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.cancelBus) {
@@ -98,7 +108,7 @@ const Buspassform = () => {
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Basic Fields */}
+        {/* Name */}
         <div>
           <label className="block font-medium">Full Name</label>
           <input
@@ -112,6 +122,7 @@ const Buspassform = () => {
           />
         </div>
 
+        {/* Roll No */}
         <div>
           <label className="block font-medium">Roll Number</label>
           <input
@@ -125,6 +136,7 @@ const Buspassform = () => {
           />
         </div>
 
+        {/* Department */}
         <div>
           <label className="block font-medium">Department</label>
           <input
@@ -138,6 +150,7 @@ const Buspassform = () => {
           />
         </div>
 
+        {/* Year */}
         <div>
           <label className="block font-medium">Year</label>
           <select
@@ -155,6 +168,7 @@ const Buspassform = () => {
           </select>
         </div>
 
+        {/* Route */}
         <div>
           <label className="block font-medium">Bus Route</label>
           <input
@@ -168,6 +182,7 @@ const Buspassform = () => {
           />
         </div>
 
+        {/* Address */}
         <div>
           <label className="block font-medium">Address</label>
           <textarea
@@ -193,11 +208,14 @@ const Buspassform = () => {
           <label className="font-medium">Request Bus Cancellation</label>
         </div>
 
-        {/* Extra Fields for Cancellation */}
+        {/* Cancel Section */}
         {formData.cancelBus && (
-          <div className="space-y-3 mt-2 p-3 border rounded-lg bg-gray-50">
+          <div className="space-y-3 mt-2 p-4 border rounded-lg bg-gray-50">
+            {/* Reason */}
             <div>
-              <label className="block font-medium">Reason for Cancellation</label>
+              <label className="block font-medium">
+                Reason for Cancellation
+              </label>
               <input
                 type="text"
                 name="reason"
@@ -209,6 +227,7 @@ const Buspassform = () => {
               />
             </div>
 
+            {/* Semester */}
             <div>
               <label className="block font-medium">Semester</label>
               <select
@@ -219,17 +238,17 @@ const Buspassform = () => {
                 required
               >
                 <option value="">Select Semester</option>
-                <option value="1st Sem">1st Semester</option>
-                <option value="2nd Sem">2nd Semester</option>
-                <option value="3rd Sem">3rd Semester</option>
-                <option value="4th Sem">4th Semester</option>
-                <option value="5th Sem">5th Semester</option>
-                <option value="6th Sem">6th Semester</option>
-                <option value="7th Sem">7th Semester</option>
-                <option value="8th Sem">8th Semester</option>
+                {["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"].map(
+                  (sem) => (
+                    <option key={sem} value={`${sem} Sem`}>
+                      {sem} Semester
+                    </option>
+                  )
+                )}
               </select>
             </div>
 
+            {/* Fees Pending */}
             <div className="flex items-center space-x-2">
               <input
                 type="checkbox"
@@ -241,6 +260,7 @@ const Buspassform = () => {
               <label className="font-medium">Bus Fees Pending</label>
             </div>
 
+            {/* Office Acknowledged */}
             <div className="flex items-center space-x-2">
               <input
                 type="checkbox"
@@ -251,41 +271,44 @@ const Buspassform = () => {
               />
               <label className="font-medium">Acknowledged by Office</label>
             </div>
-            {/* Acknowledgement / Signature Box */}
-<div className="mt-4 p-4 border-2 border-dashed border-gray-400 rounded-lg bg-gray-50">
-  <h3 className="font-semibold mb-2 text-center text-gray-700">
-    College Acknowledgement
-  </h3>
-  
-  <div className="flex justify-between mt-4">
-    <div className="flex flex-col items-center w-1/3">
-      <div className="w-full h-12 border-b-2 border-gray-600"></div>
-      <span className="text-sm mt-1">HOD Signature</span>
-    </div>
-    
-    <div className="flex flex-col items-center w-1/3">
-      <div className="w-full h-12 border-b-2 border-gray-600"></div>
-      <span className="text-sm mt-1">Vice Principal Signature</span>
-    </div>
-    
-    <div className="flex flex-col items-center w-1/3">
-      <div className="w-full h-12 border-b-2 border-gray-600"></div>
-      <span className="text-sm mt-1">Principal Signature</span>
-    </div>
-  </div>
 
-  <div className="flex justify-center mt-4">
-    <div className="flex flex-col items-center w-1/2">
-      <div className="w-full h-12 border-2 border-gray-600 flex items-center justify-center">
-        College Stamp / Seal
-      </div>
-    </div>
-  </div>
-</div>
+            {/* Signature & Stamp Section */}
+            <div className="mt-4 p-4 border-2 border-dashed border-gray-400 rounded-lg bg-gray-50">
+              <h3 className="font-semibold mb-4 text-center text-gray-700">
+                College Acknowledgement
+              </h3>
 
+              <div className="flex justify-between mb-6">
+                {/* HOD */}
+                <div className="flex flex-col items-center w-1/3">
+                  <div className="w-24 h-10 border-b-2 border-gray-600"></div>
+                  <span className="text-sm mt-1">HOD</span>
+                </div>
+
+                {/* Vice Principal */}
+                <div className="flex flex-col items-center w-1/3">
+                  <div className="w-24 h-10 border-b-2 border-gray-600"></div>
+                  <span className="text-sm mt-1">Vice Principal</span>
+                </div>
+
+                {/* Principal */}
+                <div className="flex flex-col items-center w-1/3">
+                  <div className="w-24 h-10 border-b-2 border-gray-600"></div>
+                  <span className="text-sm mt-1">Principal</span>
+                </div>
+              </div>
+
+              {/* College Stamp */}
+              <div className="flex justify-center">
+                <div className="w-40 h-16 border-2 border-gray-600 flex items-center justify-center">
+                  College Stamp / Seal
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
+        {/* Submit */}
         <button
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"

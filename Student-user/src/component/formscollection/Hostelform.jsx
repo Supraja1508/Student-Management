@@ -39,7 +39,7 @@ const Hostelform = () => {
 
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 rounded-3xl shadow-xl bg-black/10 backdrop-blur-lg text-black">
-      <h2 className="text-3xl font-bold text-center mb-6">Girls Hostel Form</h2>
+      <h2 className="text-3xl font-bold text-center mb-6 uppercase">Hostel Form</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Student Info */}

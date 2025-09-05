@@ -30,7 +30,7 @@ const Internshipform = () => {
 
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 rounded-3xl shadow-xl bg-white/10 backdrop-blur-lg text-white">
-      <h2 className="text-3xl font-bold text-black text-center mb-6">Internship Form</h2>
+      <h2 className="text-3xl font-bold text-black text-center mb-6 uppercase">Internship Form</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Full Name */}

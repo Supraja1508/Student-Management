@@ -21,6 +21,7 @@ import Librarycardform from "./component/formscollection/Librarycardform";
 import Migrationform from "./component/formscollection/Migrationform";
 import Placementform from "./component/formscollection/Placementform";
 import Scholarshipform from "./component/formscollection/Scholarshipform";
+import BonofideForm from "./component/formscollection/Bonofideform";
 function App(){
   return(
     <BrowserRouter>
@@ -49,6 +50,7 @@ function App(){
       <Route path="/dashboardlayout/requestform/Migrationform" element={<Migrationform/>} />
       <Route path="/dashboardlayout/requestform/placementform" element={<Placementform/>} />
       <Route path="/dashboardlayout/requestform/Scholarshipform" element={<Scholarshipform/>} />
+      <Route path="/dashboardlayout/requestform/Bonofideform" element={<BonofideForm/>} />
       
     </Route>
   </Routes>
